@@ -1,27 +1,105 @@
 ﻿<%- include('partials/header') %>
-<div class="text-center">
-    <h2>分析結果報告</h2>
-    <div class="alert alert-info mt-3 d-inline-block">
-        負債比率：<strong><%= ratio %>%</strong>
+
+<div class="max-w-5xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">AI 分析報告</h2>
+        <a href="/diagnose" class="text-sm text-gray-400 hover:text-white transition"><i class="fa-solid fa-arrow-left mr-1"></i> 重新測試</a>
     </div>
-    <div class="mt-4">
-        <% if (risk === '高危險') { %>
-            <div class="p-3 bg-danger text-white rounded">
-                <h4>⚠️ 風險評估：高危險</h4>
-                <p>您的負債已超過安全水位，建議立即啟動協商機制。</p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-1 space-y-6">
+            <div class="bg-cardbg p-6 rounded-xl border border-gray-700 shadow-lg text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                <h3 class="text-gray-400 text-sm uppercase tracking-wider">負債比率</h3>
+                <div class="text-5xl font-bold text-white my-4"><%= ratio %><span class="text-2xl text-gray-500">%</span></div>
+                
+                <% if (risk === '高危險') { %>
+                    <span class="inline-block px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm font-medium">⚠️ 高風險</span>
+                <% } else if (risk === '中度風險') { %>
+                    <span class="inline-block px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium">⚠️ 中度風險</span>
+                <% } else { %>
+                    <span class="inline-block px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">✅ 狀況健康</span>
+                <% } %>
             </div>
-        <% } else if (risk === '中度風險') { %>
-            <div class="p-3 bg-warning text-dark rounded">
-                <h4>⚠️ 風險評估：中度風險</h4>
-                <p>需注意收支平衡，避免擴大債務。</p>
+
+            <div class="bg-cardbg p-6 rounded-xl border border-gray-700 shadow-lg">
+                <h3 class="text-gray-400 text-sm mb-4">財務數據</h3>
+                <div class="flex justify-between items-center border-b border-gray-700 pb-3 mb-3">
+                    <span>月收入</span>
+                    <span class="text-white font-mono"><%= income %> 萬</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>總負債</span>
+                    <span class="text-white font-mono"><%= debt %> 萬</span>
+                </div>
             </div>
-        <% } else { %>
-            <div class="p-3 bg-success text-white rounded">
-                <h4>✅ 風險評估：健康</h4>
-                <p>您的財務狀況目前良好。</p>
+        </div>
+
+        <div class="lg:col-span-2 bg-cardbg p-6 rounded-xl border border-gray-700 shadow-lg flex flex-col">
+            <h3 class="text-gray-400 text-sm mb-4">財務五力分析模型</h3>
+            <div class="flex-1 relative min-h-[300px]">
+                <canvas id="radarChart"></canvas>
             </div>
-        <% } %>
+        </div>
     </div>
-    <a href="/diagnose" class="btn btn-outline-secondary mt-4">重新測試</a>
+    
+    <div class="mt-6 bg-gradient-to-r from-blue-900/40 to-purple-900/40 border border-blue-500/30 p-6 rounded-xl">
+        <h3 class="text-blue-400 font-bold mb-2"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>AI 法律建議</h3>
+        <p class="text-gray-300 leading-relaxed">
+            <% if (risk === '高危險') { %>
+                根據您的負債比率 (<%= ratio %>%)，系統判定您符合消費者債務清理條例之協商機制。建議您立即下載債務清冊，並聯繫法律顧問進行前置協商，以避免強制執行程序。
+            <% } else { %>
+                您的財務狀況尚在可控範圍內。建議每月提撥收入的 20% 進行定期定額還款，並隨時關注利率變動。
+            <% } %>
+        </p>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('radarChart');
+    const ratio = <%= ratio %>;
+    
+    // 簡單模擬數據
+    const scoreDebt = Math.max(0, 100 - ratio); 
+    const scoreCredit = ratio > 60 ? 40 : 85;
+    const scoreCash = ratio > 50 ? 30 : 75;
+    const scoreGrow = 60;
+    const scoreRisk = Math.max(0, 100 - (ratio * 1.2));
+
+    // Chart.js 深色模式設定
+    Chart.defaults.color = '#94a3b8';
+    Chart.defaults.borderColor = '#334155';
+
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['負債控制', '信用評分', '現金流', '資產成長', '風險承受'],
+            datasets: [{
+                label: '財務模型',
+                data: [scoreDebt, scoreCredit, scoreCash, scoreGrow, scoreRisk],
+                fill: true,
+                backgroundColor: 'rgba(59, 130, 246, 0.2)', // blue-500 with opacity
+                borderColor: '#3b82f6', // blue-500
+                pointBackgroundColor: '#3b82f6',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#3b82f6'
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { display: true },
+                    grid: { color: '#334155' },
+                    pointLabels: { font: { size: 14 } },
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                }
+            }
+        }
+    });
+</script>
+
 <%- include('partials/footer') %>
