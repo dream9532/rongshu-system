@@ -1,17 +1,18 @@
-﻿const express = require('express');
+const express = require('express');
 const app = express();
-const port = 3000;
+// 關鍵修改：讓雲端決定 Port
+const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.render('index', { title: '融數科技 - 系統首頁' });
+    res.render('index', { title: '融數核心系統 - System Online' });
 });
 
 app.get('/diagnose', (req, res) => {
-    res.render('diagnose', { title: '財務健康度健檢' });
+    res.render('diagnose', { title: '啟動運算引擎' });
 });
 
 app.post('/result', (req, res) => {
@@ -28,9 +29,9 @@ app.post('/result', (req, res) => {
     if(ratio > 60) risk = '高危險';
     else if(ratio > 30) risk = '中度風險';
 
-    res.render('result', { title: '分析報告', ratio, risk, income, debt });
+    res.render('result', { title: '深度解析報告', ratio, risk, income, debt });
 });
 
 app.listen(port, () => {
-    console.log('系統已啟動： http://localhost:3000');
+    console.log(`系統已啟動： Port ${port}`);
 });
