@@ -1,0 +1,27 @@
+﻿<%- include('partials/header') %>
+<div class="text-center">
+    <h2>分析結果報告</h2>
+    <div class="alert alert-info mt-3 d-inline-block">
+        負債比率：<strong><%= ratio %>%</strong>
+    </div>
+    <div class="mt-4">
+        <% if (risk === '高危險') { %>
+            <div class="p-3 bg-danger text-white rounded">
+                <h4>⚠️ 風險評估：高危險</h4>
+                <p>您的負債已超過安全水位，建議立即啟動協商機制。</p>
+            </div>
+        <% } else if (risk === '中度風險') { %>
+            <div class="p-3 bg-warning text-dark rounded">
+                <h4>⚠️ 風險評估：中度風險</h4>
+                <p>需注意收支平衡，避免擴大債務。</p>
+            </div>
+        <% } else { %>
+            <div class="p-3 bg-success text-white rounded">
+                <h4>✅ 風險評估：健康</h4>
+                <p>您的財務狀況目前良好。</p>
+            </div>
+        <% } %>
+    </div>
+    <a href="/diagnose" class="btn btn-outline-secondary mt-4">重新測試</a>
+</div>
+<%- include('partials/footer') %>

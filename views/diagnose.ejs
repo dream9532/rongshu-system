@@ -1,0 +1,20 @@
+﻿<%- include('partials/header') %>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card card-custom p-4">
+            <h3 class="mb-4 text-center">輸入財務資料</h3>
+            <form action="/result" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">月收入 (萬元)</label>
+                    <input type="number" name="income" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">總負債 (萬元)</label>
+                    <input type="number" name="debt" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">執行 AI 分析</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') %>
