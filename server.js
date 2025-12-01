@@ -80,3 +80,19 @@ app.post('/result', async (req, res) => {
 app.listen(port, () => {
     console.log(`核心系統已啟動： Port ${port}`);
 });
+// (重新覆蓋聊天路由，確保它自稱專業顧問)
+app.post('/api/chat', async (req, res) => {
+    const userMessage = req.body.message;
+    try {
+        const completion = await openai.chat.completions.create({
+            model: "gpt-4o",
+            messages: [
+                { role: "system", content: "你是一位台灣資深律師與金融顧問。請以『數位法務顧問』的身份回答。回答問題時，語氣要專業、冷靜、有條理。嚴禁提及你是『AI』、『語言模型』或『機器人』。請直接針對使用者的法律問題提供具體策略，並盡可能引用台灣相關法條（如民法、刑法、消債條例）。" },
+                { role: "user", content: userMessage }
+            ],
+        });
+        res.json({ reply: completion.choices[0].message.content });
+    } catch (error) {
+        res.status(500).json({ reply: "系統連線繁忙，請稍後再試。" });
+    }
+});
