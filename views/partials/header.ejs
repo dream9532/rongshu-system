@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW" class="dark">
 <head>
     <meta charset="UTF-8">
@@ -11,9 +11,11 @@
             theme: {
                 extend: {
                     colors: {
-                        darkbg: '#0f172a',
-                        cardbg: '#1e293b',
-                        primary: '#3b82f6',
+                        darkbg: '#0a0a0a',
+                        cardbg: '#171717',
+                        primary: '#d4af37',
+                        primary_hover: '#b5952f',
+                        text_muted: '#a3a3a3'
                     }
                 }
             }
@@ -21,44 +23,46 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-darkbg text-gray-100 font-sans antialiased overflow-hidden">
+<body class="bg-darkbg text-gray-100 font-sans antialiased overflow-hidden selection:bg-primary selection:text-black">
     <div class="flex h-screen">
-        <aside class="w-64 bg-cardbg border-r border-gray-700 hidden md:flex flex-col">
-            <div class="h-16 flex items-center justify-center border-b border-gray-700">
-                <h1 class="text-xl font-bold text-primary"><i class="fa-solid fa-scale-balanced mr-2"></i>融數科技</h1>
+        <aside class="w-72 bg-cardbg border-r border-neutral-800 hidden md:flex flex-col">
+            <div class="h-auto py-6 flex items-center justify-center border-b border-neutral-800 bg-black/20">
+                <img src="/images/logo.png" alt="法務理債策略研究室" class="w-48 hover:opacity-90 transition duration-300">
             </div>
-            <nav class="flex-1 px-4 py-6 space-y-2">
-                <a href="/" class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors">
-                    <i class="fa-solid fa-house w-6"></i> 系統總覽
+            
+            <nav class="flex-1 px-4 py-6 space-y-3">
+                <a href="/" class="flex items-center px-4 py-3 text-gray-300 hover:bg-neutral-800 hover:text-primary rounded-lg transition-all group">
+                    <i class="fa-solid fa-chart-line w-6 text-neutral-500 group-hover:text-primary transition"></i> 
+                    <span class="tracking-wide">戰情總覽 (Dashboard)</span>
                 </a>
-                <a href="/diagnose" class="flex items-center px-4 py-3 bg-primary/10 text-primary rounded-lg transition-colors">
-                    <i class="fa-solid fa-stethoscope w-6"></i> 財務健檢
+                <a href="/diagnose" class="flex items-center px-4 py-3 bg-primary/10 text-primary border border-primary/20 rounded-lg transition-all shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+                    <i class="fa-solid fa-gavel w-6"></i> 
+                    <span class="tracking-wide font-bold">啟動 AI 判例分析</span>
                 </a>
-                <a href="#" class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors">
-                    <i class="fa-solid fa-file-contract w-6"></i> 法律RAG (開發中)
+                <a href="/plan" class="flex items-center px-4 py-3 text-gray-300 hover:bg-neutral-800 hover:text-primary rounded-lg transition-all group">
+                    <i class="fa-solid fa-book-journal-whills w-6 text-neutral-500 group-hover:text-primary transition"></i> 
+                    <span class="tracking-wide">專案白皮書 (Whitepaper)</span>
                 </a>
-                <a href="#" class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors">
-                    <i class="fa-solid fa-user w-6"></i> 會員中心
+                <a href="#" class="flex items-center px-4 py-3 text-gray-300 hover:bg-neutral-800 hover:text-primary rounded-lg transition-all group">
+                    <i class="fa-solid fa-users-viewfinder w-6 text-neutral-500 group-hover:text-primary transition"></i> 
+                    <span class="tracking-wide">客戶案件管理</span>
                 </a>
             </nav>
-            <div class="p-4 border-t border-gray-700">
+            
+            <div class="p-4 border-t border-neutral-800 bg-neutral-900/50">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-gray-500"></div>
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-yellow-200 border-2 border-black flex items-center justify-center text-black font-bold">A</div>
                     <div>
-                        <p class="text-sm font-medium">系統管理員</p>
-                        <p class="text-xs text-gray-400">admin@rongshu.com</p>
+                        <p class="text-sm font-bold text-primary">ADMINISTRATOR</p>
+                        <p class="text-xs text-neutral-500">系統最高權限</p>
                     </div>
                 </div>
             </div>
         </aside>
 
-        <main class="flex-1 flex flex-col overflow-hidden relative">
-            <header class="h-16 bg-cardbg border-b border-gray-700 flex items-center justify-between px-6">
-                <div class="md:hidden text-xl font-bold">融數科技</div>
-                <div class="flex items-center gap-4 ml-auto">
-                    <button class="p-2 text-gray-400 hover:text-white"><i class="fa-solid fa-bell"></i></button>
-                    <button class="p-2 text-gray-400 hover:text-white"><i class="fa-solid fa-gear"></i></button>
-                </div>
+        <main class="flex-1 flex flex-col overflow-hidden relative bg-gradient-to-br from-darkbg to-neutral-900">
+            <header class="h-16 bg-cardbg border-b border-neutral-800 flex items-center justify-between px-6 md:hidden">
+                <div class="text-lg font-bold text-primary">法務理債策略研究室</div>
+                <button class="text-gray-400"><i class="fa-solid fa-bars"></i></button>
             </header>
-
-            <div class="flex-1 overflow-auto p-6">
+            <div class="flex-1 overflow-auto p-8 custom-scrollbar">
