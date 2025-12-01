@@ -16,6 +16,10 @@ app.get('/', (req, res) => {
     res.render('index', { title: '融數核心系統 - System Online' });
 });
 
+app.get('/plan', (req, res) => {
+    res.render('plan', { title: '專案白皮書 - 法務理債策略研究室' });
+});
+
 app.get('/diagnose', (req, res) => {
     res.render('diagnose', { title: '啟動運算引擎' });
 });
