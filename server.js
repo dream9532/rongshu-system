@@ -43,7 +43,7 @@ app.post('/result', async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o",
             messages: [
-                { role: "system", content: "你是一位台灣頂尖的金融法律專家，精通《消費者債務清理條例》。請根據用戶數據進行風險評估。回傳純 JSON 格式。" },
+                { role: "system", content: "你是一位台灣頂尖的金融法律專家，精通《消費者債務清理條例》。請根據用戶數據進行風險評估。回傳純 JSON 格式，不要有 markdown 標記。" },
                 { role: "user", content: `使用者月收入：${income} 萬元，總負債：${debt} 萬元。
                 請嚴格依照此 JSON 格式回傳：
                 {

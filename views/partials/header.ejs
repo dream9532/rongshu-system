@@ -16,21 +16,31 @@
                         primary: '#d4af37',
                         primary_hover: '#b5952f',
                         text_muted: '#a3a3a3'
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
                     }
                 }
             }
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 1s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* 隱藏滾動條但保留功能 */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #171717; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #d4af37; }
     </style>
 </head>
 <body class="bg-darkbg text-gray-100 font-sans antialiased overflow-hidden selection:bg-primary selection:text-black">
     <div class="flex h-screen">
         <aside class="w-72 bg-cardbg border-r border-neutral-800 hidden md:flex flex-col">
-            <div class="h-auto py-6 flex items-center justify-center border-b border-neutral-800 bg-black/20">
+            <div class="h-auto py-8 flex items-center justify-center border-b border-neutral-800 bg-black/20">
                 <img src="/images/logo.png" alt="法務理債策略研究室" class="w-48 hover:opacity-90 transition duration-300">
             </div>
             
@@ -40,22 +50,22 @@
                     <span class="tracking-wide">戰情總覽 (Dashboard)</span>
                 </a>
                 <a href="/diagnose" class="flex items-center px-4 py-3 bg-primary/10 text-primary border border-primary/20 rounded-lg transition-all shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-                    <i class="fa-solid fa-gavel w-6"></i> 
-                    <span class="tracking-wide font-bold">啟動智能判例分析</span>
+                    <i class="fa-solid fa-microchip w-6"></i> 
+                    <span class="tracking-wide font-bold">啟動運算引擎</span>
                 </a>
                 <a href="/plan" class="flex items-center px-4 py-3 text-gray-300 hover:bg-neutral-800 hover:text-primary rounded-lg transition-all group">
                     <i class="fa-solid fa-book-journal-whills w-6 text-neutral-500 group-hover:text-primary transition"></i> 
                     <span class="tracking-wide">專案白皮書 (Whitepaper)</span>
                 </a>
                 <a href="#" class="flex items-center px-4 py-3 text-gray-300 hover:bg-neutral-800 hover:text-primary rounded-lg transition-all group">
-                    <i class="fa-solid fa-users-viewfinder w-6 text-neutral-500 group-hover:text-primary transition"></i> 
-                    <span class="tracking-wide">客戶案件管理</span>
+                    <i class="fa-solid fa-folder-open w-6 text-neutral-500 group-hover:text-primary transition"></i> 
+                    <span class="tracking-wide">案件管理系統</span>
                 </a>
             </nav>
             
             <div class="p-4 border-t border-neutral-800 bg-neutral-900/50">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-yellow-200 border-2 border-black flex items-center justify-center text-black font-bold">A</div>
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-yellow-200 border-2 border-black flex items-center justify-center text-black font-bold shadow-lg">A</div>
                     <div>
                         <p class="text-sm font-bold text-primary">ADMINISTRATOR</p>
                         <p class="text-xs text-neutral-500">系統最高權限</p>
@@ -69,4 +79,4 @@
                 <div class="text-lg font-bold text-primary">法務理債策略研究室</div>
                 <button class="text-gray-400"><i class="fa-solid fa-bars"></i></button>
             </header>
-            <div class="flex-1 overflow-auto p-8 custom-scrollbar">
+            <div class="flex-1 overflow-auto p-0 custom-scrollbar">

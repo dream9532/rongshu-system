@@ -1,36 +1,42 @@
 <%- include('partials/header') %>
 
-<div class="relative min-h-screen bg-darkbg font-sans selection:bg-primary selection:text-black pb-24 scroll-smooth">
+<div class="relative min-h-screen bg-darkbg font-sans selection:bg-primary selection:text-black pb-32 scroll-smooth">
     
     <!-- 頂部英雄區 (Hero Section) -->
     <div class="relative w-full bg-neutral-900 border-b border-neutral-800 overflow-hidden">
         <!-- 背景特效 -->
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6 py-24 relative z-10 text-center">
-            <!-- 巨大 Logo 展示 (含光暈特效) -->
-            <div class="mb-10 inline-block relative group cursor-pointer">
-                <div class="absolute inset-0 bg-primary/30 blur-2xl rounded-full opacity-60 group-hover:opacity-100 transition duration-700 animate-pulse"></div>
-                <img src="/images/logo.png" alt="法務理債策略研究室" class="h-40 md:h-56 relative z-10 drop-shadow-2xl hover:scale-105 transition duration-500">
+            <!-- 巨大 Logo 展示 (含呼吸燈效) -->
+            <div class="mb-12 inline-block relative group cursor-pointer animate-fade-in">
+                <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full opacity-40 group-hover:opacity-80 transition duration-1000 animate-pulse"></div>
+                <img src="/images/logo.png" alt="法務理債策略研究室" class="h-40 md:h-60 relative z-10 drop-shadow-2xl hover:scale-105 transition duration-500">
             </div>
             
-            <div class="space-y-4">
-                <span class="inline-block py-1 px-3 border border-primary/30 rounded-full text-primary text-xs font-mono tracking-widest bg-primary/5">OFFICIAL WHITEPAPER v2.0</span>
-                <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight">
-                    智能法務系統 <span class="block mt-2 text-primary">架構與發展藍圖</span>
+            <div class="space-y-6 max-w-4xl mx-auto">
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-primary text-xs font-mono tracking-[0.2em] uppercase">System Whitepaper v2.0</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight leading-tight">
+                    智能法務與理債策略 <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37]">核心運算架構藍圖</span>
                 </h1>
-                <p class="text-xl text-neutral-400 font-light max-w-3xl mx-auto mt-6 leading-relaxed">
-                    打造台灣首座具備「法律邏輯推演」能力的數位法務基礎設施。<br>
-                    整合行政訴訟、不動產強制執行與刑事分析，實現法律服務的自動化與精準化。
+                
+                <p class="text-xl text-neutral-400 font-light leading-relaxed">
+                    整合行政訴訟、不動產強制執行與刑事構成要件分析。<br>
+                    打造台灣首座具備「法律邏輯推演」能力的數位法務基礎設施。
                 </p>
             </div>
             
-            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                <button onclick="window.print()" class="px-8 py-4 bg-neutral-800 hover:bg-neutral-700 border border-neutral-600 hover:border-primary text-white rounded-lg transition font-bold flex items-center justify-center group">
-                    <i class="fa-solid fa-file-pdf mr-3 group-hover:text-primary transition"></i> 下載完整報告 (PDF)
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-5">
+                <button onclick="window.print()" class="px-8 py-4 bg-neutral-800 hover:bg-neutral-700 border border-neutral-600 hover:border-primary text-white rounded-lg transition font-bold flex items-center justify-center group uppercase tracking-widest text-sm">
+                    <i class="fa-solid fa-file-pdf mr-3 text-neutral-400 group-hover:text-primary transition"></i> Export Report
                 </button>
-                <a href="/diagnose" class="px-8 py-4 bg-primary hover:bg-primary_hover text-black font-bold rounded-lg transition shadow-[0_0_30px_rgba(212,175,55,0.3)] flex items-center justify-center hover:scale-105">
+                <a href="/diagnose" class="px-8 py-4 bg-gradient-to-r from-primary to-[#b5952f] hover:brightness-110 text-black font-bold rounded-lg transition shadow-[0_0_40px_rgba(212,175,55,0.3)] flex items-center justify-center hover:scale-105 uppercase tracking-widest text-sm">
                     <i class="fa-solid fa-microchip mr-3"></i> 啟動運算引擎
                 </a>
             </div>
@@ -38,218 +44,212 @@
     </div>
 
     <!-- 主要內容區 -->
-    <div class="max-w-7xl mx-auto px-6 mt-16 flex flex-col lg:flex-row gap-16">
+    <div class="max-w-7xl mx-auto px-6 mt-20 flex flex-col lg:flex-row gap-16">
         
         <!-- 左側懸浮目錄 (Sticky TOC) -->
         <aside class="hidden lg:block w-72 shrink-0">
-            <div class="sticky top-8 bg-cardbg/50 backdrop-blur border border-neutral-800 p-6 rounded-xl">
-                <p class="text-xs font-bold text-primary uppercase tracking-widest mb-6 border-b border-neutral-800 pb-2">Table of Contents</p>
-                <nav class="space-y-1">
-                    <a href="#vision" class="group flex items-center px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
-                        <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-primary mr-3 transition"></span> 1. 核心願景與定位
+            <div class="sticky top-8 space-y-8">
+                <div class="bg-cardbg/80 backdrop-blur border border-neutral-800 p-6 rounded-xl shadow-2xl">
+                    <p class="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-6 border-b border-neutral-800 pb-4">Table of Contents</p>
+                    <nav class="space-y-1 font-mono text-sm">
+                        <a href="#vision" class="group flex items-center px-3 py-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neutral-700 group-hover:bg-primary mr-3 transition"></span> 01. 核心願景
+                        </a>
+                        <a href="#painpoints" class="group flex items-center px-3 py-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neutral-700 group-hover:bg-primary mr-3 transition"></span> 02. 市場結構痛點
+                        </a>
+                        <a href="#modules" class="group flex items-center px-3 py-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neutral-700 group-hover:bg-primary mr-3 transition"></span> 03. 五大運算模組
+                        </a>
+                        <a href="#rag" class="group flex items-center px-3 py-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neutral-700 group-hover:bg-primary mr-3 transition"></span> 04. RAG 技術架構
+                        </a>
+                        <a href="#gov" class="group flex items-center px-3 py-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neutral-700 group-hover:bg-primary mr-3 transition"></span> 05. 政府 POC 提案
+                        </a>
+                        <a href="#security" class="group flex items-center px-3 py-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neutral-700 group-hover:bg-primary mr-3 transition"></span> 06. 資安與合規
+                        </a>
+                    </nav>
+                </div>
+                
+                <!-- 聯絡卡片 -->
+                <div class="bg-gradient-to-br from-primary to-[#b5952f] p-6 rounded-xl text-black">
+                    <h4 class="font-bold text-lg mb-2">投資洽詢</h4>
+                    <p class="text-sm opacity-80 mb-4">我們正在尋求種子輪融資與政府合作夥伴。</p>
+                    <a href="mailto:admin@rongshu.com" class="block w-full py-2 bg-black/10 hover:bg-black/20 rounded text-center text-xs font-bold transition">
+                        CONTACT US
                     </a>
-                    <a href="#market" class="group flex items-center px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
-                        <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-primary mr-3 transition"></span> 2. 市場結構性痛點
-                    </a>
-                    <a href="#modules" class="group flex items-center px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
-                        <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-primary mr-3 transition"></span> 3. 五大智能引擎
-                    </a>
-                    <a href="#tech" class="group flex items-center px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
-                        <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-primary mr-3 transition"></span> 4. 技術架構 (RAG)
-                    </a>
-                    <a href="#gov" class="group flex items-center px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
-                        <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-primary mr-3 transition"></span> 5. 政府 POC 提案
-                    </a>
-                    <a href="#business" class="group flex items-center px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition">
-                        <span class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-primary mr-3 transition"></span> 6. 商業模式
-                    </a>
-                </nav>
+                </div>
             </div>
         </aside>
 
-        <!-- 右側詳細內容 -->
-        <div class="flex-1 space-y-24">
+        <!-- 右側詳細內容 (Document Body) -->
+        <div class="flex-1 space-y-32">
             
-            <!-- 1. 願景 -->
+            <!-- 1. 核心願景 -->
             <section id="vision" class="scroll-mt-32">
-                <div class="flex items-end mb-8 border-b border-neutral-800 pb-4">
-                    <span class="text-6xl font-black text-neutral-800 mr-4 -mb-1">01</span>
-                    <h2 class="text-3xl font-bold text-white">核心願景與定位 (Vision)</h2>
+                <div class="flex items-end mb-10 border-b border-neutral-800 pb-6">
+                    <span class="text-7xl font-black text-neutral-800 mr-6 -mb-2">01</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-white">核心願景與定位</h2>
+                        <p class="text-primary font-mono text-sm mt-1 uppercase tracking-wider">Vision & Positioning</p>
+                    </div>
                 </div>
                 
-                <div class="space-y-8">
-                    <div class="bg-cardbg p-8 rounded-2xl border-l-4 border-primary shadow-xl">
-                        <h4 class="text-xl font-bold text-white mb-4">這不是聊天機器人，這是法律工作流引擎。</h4>
-                        <p class="text-gray-400 leading-relaxed text-lg">
-                            本系統定位為能夠替法律專業人士「執行任務」的智能引擎 (Intelligent Workflow Engine)。
-                            不同於一般對話模型，我們專注於<strong class="text-primary">「結果交付」</strong>：從證據整理、找出爭點、到生成符合法院格式的書狀，實現全流程自動化。
+                <div class="prose prose-invert max-w-none">
+                    <div class="bg-neutral-900/50 p-8 rounded-2xl border-l-4 border-primary mb-10">
+                        <h4 class="text-2xl font-bold text-white mb-4">這不是聊天機器人，這是「法律工作流引擎」。</h4>
+                        <p class="text-gray-400 text-lg leading-relaxed">
+                            本系統定位為能夠替律師、公務員與民眾「執行任務」的智能引擎 (Workflow Engine)。我們不只是回答問題，而是專注於<strong class="text-white">「結果交付」</strong>：從證據整理、找出爭點、到生成符合法院格式的書狀，實現全流程自動化。
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800">
-                            <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary mb-4"><i class="fa-solid fa-users"></i></div>
-                            <h5 class="text-white font-bold mb-2">一般民眾</h5>
-                            <p class="text-sm text-gray-500">如同「報稅軟體」般的法律助手，自動產生正確格式的書狀，降低訴訟門檻。</p>
+                        <div class="p-6 bg-cardbg rounded-xl border border-neutral-800 hover:border-primary/50 transition">
+                            <div class="text-3xl text-primary mb-4"><i class="fa-solid fa-layer-group"></i></div>
+                            <h5 class="text-xl font-bold text-white mb-3">多層次法律推論</h5>
+                            <p class="text-gray-400">系統具備行政、民事、刑事、不動產四種不同的邏輯推演人格，能依案件類型自動切換思考模式。</p>
                         </div>
-                        <div class="bg-neutral-900 p-6 rounded-xl border border-neutral-800">
-                            <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary mb-4"><i class="fa-solid fa-scale-balanced"></i></div>
-                            <h5 class="text-white font-bold mb-2">法律專業人士</h5>
-                            <p class="text-sm text-gray-500">自動處理 80% 重複性文書工作（如判決檢索、卷證整理），專注於核心策略。</p>
+                        <div class="p-6 bg-cardbg rounded-xl border border-neutral-800 hover:border-primary/50 transition">
+                            <div class="text-3xl text-primary mb-4"><i class="fa-solid fa-database"></i></div>
+                            <h5 class="text-xl font-bold text-white mb-3">國家級資料整合</h5>
+                            <p class="text-gray-400">直接串接內政部地籍圖資、司法院裁判書與財政部稅務數據，將分散的政府資料進行結構化融合。</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- 2. 市場痛點 -->
-            <section id="market" class="scroll-mt-32">
-                <div class="flex items-end mb-8 border-b border-neutral-800 pb-4">
-                    <span class="text-6xl font-black text-neutral-800 mr-4 -mb-1">02</span>
-                    <h2 class="text-3xl font-bold text-white">市場結構性痛點 (Pain Points)</h2>
+            <section id="painpoints" class="scroll-mt-32">
+                <div class="flex items-end mb-10 border-b border-neutral-800 pb-6">
+                    <span class="text-7xl font-black text-neutral-800 mr-6 -mb-2">02</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-white">市場結構性痛點</h2>
+                        <p class="text-primary font-mono text-sm mt-1 uppercase tracking-wider">Market Pain Points</p>
+                    </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="group bg-neutral-900/50 p-8 rounded-xl border border-neutral-800 hover:border-red-500/50 transition duration-300">
-                        <div class="text-red-900 group-hover:text-red-500 text-4xl mb-6 transition"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-                        <h4 class="text-white font-bold mb-3 text-lg">極高昂的成本</h4>
-                        <p class="text-gray-400 leading-relaxed">傳統訴訟動輒 5-10 萬起跳，導致一般民眾在面對行政救濟或小額爭議時，往往選擇放棄權利。</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 痛點 1 -->
+                    <div class="group relative bg-neutral-900 p-8 rounded-2xl border border-neutral-800 overflow-hidden">
+                        <div class="absolute top-0 right-0 p-6 opacity-10 text-8xl text-red-500 group-hover:scale-110 transition"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <h4 class="text-xl font-bold text-white mb-4 relative z-10">成本極高</h4>
+                        <p class="text-gray-400 leading-relaxed relative z-10 mb-6">
+                            傳統訴訟動輒 5-10 萬起跳，導致一般民眾在面對行政救濟或小額爭議時，往往選擇放棄權利。
+                        </p>
+                        <div class="w-full bg-neutral-800 h-1 rounded-full overflow-hidden">
+                            <div class="h-full bg-red-500 w-3/4"></div>
+                        </div>
+                        <p class="text-xs text-red-500 mt-2 font-mono">90% 民眾放棄訴訟</p>
                     </div>
-                    <div class="group bg-neutral-900/50 p-8 rounded-xl border border-neutral-800 hover:border-red-500/50 transition duration-300">
-                        <div class="text-red-900 group-hover:text-red-500 text-4xl mb-6 transition"><i class="fa-solid fa-box-archive"></i></div>
-                        <h4 class="text-white font-bold mb-3 text-lg">資料極度分散</h4>
-                        <p class="text-gray-400 leading-relaxed">地籍在內政部、裁判書在司法院、稅籍在財政部，人工整合耗時數週，且容易遺漏關鍵證據。</p>
+
+                    <!-- 痛點 2 -->
+                    <div class="group relative bg-neutral-900 p-8 rounded-2xl border border-neutral-800 overflow-hidden">
+                        <div class="absolute top-0 right-0 p-6 opacity-10 text-8xl text-orange-500 group-hover:scale-110 transition"><i class="fa-solid fa-file-circle-exclamation"></i></div>
+                        <h4 class="text-xl font-bold text-white mb-4 relative z-10">文書繁重</h4>
+                        <p class="text-gray-400 leading-relaxed relative z-10 mb-6">
+                            律師 70% 時間耗費在重複性高的文書排版與判決檢索，而非核心策略思考，造成產能瓶頸。
+                        </p>
+                        <div class="w-full bg-neutral-800 h-1 rounded-full overflow-hidden">
+                            <div class="h-full bg-orange-500 w-2/3"></div>
+                        </div>
+                        <p class="text-xs text-orange-500 mt-2 font-mono">低效率文書作業</p>
                     </div>
-                    <div class="group bg-neutral-900/50 p-8 rounded-xl border border-neutral-800 hover:border-red-500/50 transition duration-300">
-                        <div class="text-red-900 group-hover:text-red-500 text-4xl mb-6 transition"><i class="fa-solid fa-clock-rotate-left"></i></div>
-                        <h4 class="text-white font-bold mb-3 text-lg">行政效率瓶頸</h4>
-                        <p class="text-gray-400 leading-relaxed">行政機關面臨案件量暴增，人力有限下難以進行深度的交叉查核，導致裁罰標準不一。</p>
+
+                    <!-- 痛點 3 -->
+                    <div class="group relative bg-neutral-900 p-8 rounded-2xl border border-neutral-800 overflow-hidden">
+                        <div class="absolute top-0 right-0 p-6 opacity-10 text-8xl text-blue-500 group-hover:scale-110 transition"><i class="fa-solid fa-sitemap"></i></div>
+                        <h4 class="text-xl font-bold text-white mb-4 relative z-10">資料孤島</h4>
+                        <p class="text-gray-400 leading-relaxed relative z-10 mb-6">
+                            地籍在內政部、裁判書在司法院、稅籍在財政部，人工整合耗時數週，且容易遺漏關鍵證據。
+                        </p>
+                        <div class="w-full bg-neutral-800 h-1 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-500 w-full"></div>
+                        </div>
+                        <p class="text-xs text-blue-500 mt-2 font-mono">跨部會整合困難</p>
                     </div>
                 </div>
             </section>
 
             <!-- 3. 五大模組 -->
             <section id="modules" class="scroll-mt-32">
-                <div class="flex items-end mb-8 border-b border-neutral-800 pb-4">
-                    <span class="text-6xl font-black text-neutral-800 mr-4 -mb-1">03</span>
-                    <h2 class="text-3xl font-bold text-white">五大智能引擎 (Core Engines)</h2>
+                <div class="flex items-end mb-10 border-b border-neutral-800 pb-6">
+                    <span class="text-7xl font-black text-neutral-800 mr-6 -mb-2">03</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-white">五大智能運算模組</h2>
+                        <p class="text-primary font-mono text-sm mt-1 uppercase tracking-wider">Core Logic Modules</p>
+                    </div>
                 </div>
-                
+
                 <div class="space-y-6">
-                    <!-- 模組 1 -->
-                    <div class="bg-cardbg p-8 rounded-xl border border-neutral-800 hover:border-primary transition group relative overflow-hidden">
-                        <div class="absolute right-0 top-0 p-6 opacity-10 text-8xl group-hover:scale-110 transition duration-500"><i class="fa-solid fa-gavel"></i></div>
-                        <div class="relative z-10">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition">行政訴訟智能引擎</h4>
-                            <p class="text-neutral-400 mb-6 max-w-2xl">專門處理稅務裁罰撤銷、地政處分爭議。自動比對行政程序法瑕疵，生成訴願書與行政訴訟起訴狀。</p>
-                            <ul class="flex flex-wrap gap-3">
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">程序瑕疵檢測</span>
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">理由附記分析</span>
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">勝訴率推估</span>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- 模組 2 -->
-                    <div class="bg-cardbg p-8 rounded-xl border border-neutral-800 hover:border-blue-500 transition group relative overflow-hidden">
-                        <div class="absolute right-0 top-0 p-6 opacity-10 text-8xl group-hover:scale-110 transition duration-500"><i class="fa-solid fa-building-columns"></i></div>
-                        <div class="relative z-10">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-blue-500 transition">不動產強制執行引擎</h4>
-                            <p class="text-neutral-400 mb-6 max-w-2xl">整合地籍圖資與實價登錄，自動分析抵押權順位、查封現況，並計算強制執行之潛在回收價值。</p>
-                            <ul class="flex flex-wrap gap-3">
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">地籍調查</span>
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">抵押權分析</span>
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">法拍估價</span>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- 模組 3 -->
-                    <div class="bg-cardbg p-8 rounded-xl border border-neutral-800 hover:border-red-500 transition group relative overflow-hidden">
-                        <div class="absolute right-0 top-0 p-6 opacity-10 text-8xl group-hover:scale-110 transition duration-500"><i class="fa-solid fa-fingerprint"></i></div>
-                        <div class="relative z-10">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-red-500 transition">刑事構成要件分析引擎</h4>
-                            <p class="text-neutral-400 mb-6 max-w-2xl">針對詐欺、偽造文書、侵占等罪名，自動比對構成要件與事實證據，生成專業的刑事告發狀或自訴狀。</p>
-                            <ul class="flex flex-wrap gap-3">
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">犯罪事實重構</span>
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">證據矩陣</span>
-                                <span class="px-3 py-1 bg-neutral-900 text-neutral-300 text-xs rounded border border-neutral-700">起訴趨勢</span>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. 技術架構 -->
-            <section id="tech" class="scroll-mt-32">
-                <div class="flex items-end mb-8 border-b border-neutral-800 pb-4">
-                    <span class="text-6xl font-black text-neutral-800 mr-4 -mb-1">04</span>
-                    <h2 class="text-3xl font-bold text-white">核心技術架構 (Technical Architecture)</h2>
-                </div>
-                <div class="bg-neutral-900 p-10 rounded-2xl border border-neutral-800">
-                    <div class="flex flex-col gap-8">
-                        <div class="border-l-4 border-purple-500 pl-6">
-                            <h4 class="text-xl font-bold text-white mb-2">1. 檢索增強生成 (RAG) 核心</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                系統不依賴通用模型的幻覺，而是建立專屬的「台灣法律向量資料庫」。包含 2000 萬筆裁判書、完整法規資料庫與行政函釋，確保每一次推論都有憑有據。
-                            </p>
-                        </div>
-                        <div class="border-l-4 border-primary pl-6">
-                            <h4 class="text-xl font-bold text-white mb-2">2. 跨政府資料融合 (Data Fusion)</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                透過 API 串接內政部地政司 (地籍/實價)、財政部 (稅務數據) 與司法院開放資料，將分散的政府數據在系統中進行結構化整合與交叉比對。
-                            </p>
-                        </div>
-                        <div class="border-l-4 border-green-500 pl-6">
-                            <h4 class="text-xl font-bold text-white mb-2">3. 專業文書生成引擎 (DocGen)</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                內建符合台灣法院標準的 A4 標楷體排版引擎。自動生成卷宗封面、目錄、頁碼與附件清單，產出之 Word/PDF 檔案可直接遞交法院。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. 政府合作 -->
-            <section id="gov" class="scroll-mt-32">
-                <div class="bg-gradient-to-br from-neutral-900 to-black p-10 rounded-2xl border border-neutral-800 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                    
-                    <div class="flex items-end mb-8 relative z-10">
-                        <span class="text-6xl font-black text-neutral-800 mr-4 -mb-1">05</span>
-                        <h2 class="text-3xl font-bold text-white">政府 POC 合作計畫 (B2G)</h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
-                        <div>
-                            <h4 class="text-primary font-bold text-lg mb-4 uppercase tracking-widest">Target Agency</h4>
-                            <ul class="space-y-6">
-                                <li>
-                                    <div class="flex items-center text-white font-bold mb-1"><i class="fa-solid fa-magnifying-glass mr-3 text-neutral-500"></i> 政風處 / 調查局</div>
-                                    <p class="text-sm text-gray-500 pl-8">公務員財產申報比對、異常標案關係人圖譜生成。</p>
-                                </li>
-                                <li>
-                                    <div class="flex items-center text-white font-bold mb-1"><i class="fa-solid fa-file-invoice-dollar mr-3 text-neutral-500"></i> 國稅局 / 賦稅署</div>
-                                    <p class="text-sm text-gray-500 pl-8">企業逃漏稅證據智能分析、虛增成本查核、金流勾稽。</p>
-                                </li>
-                                <li>
-                                    <div class="flex items-center text-white font-bold mb-1"><i class="fa-solid fa-map-location-dot mr-3 text-neutral-500"></i> 地政單位</div>
-                                    <p class="text-sm text-gray-500 pl-8">複雜產權梳理、公有地被佔用偵測、地籍異動異常分析。</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="bg-neutral-950/50 p-6 rounded-xl border border-neutral-800">
-                            <h4 class="text-green-500 font-bold text-lg mb-4 uppercase tracking-widest">Expected KPI</h4>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between text-sm text-white mb-1"><span>行政案件處理效率</span> <span class="text-green-400 font-bold">+50%</span></div>
-                                    <div class="h-2 bg-neutral-800 rounded-full"><div class="h-full bg-green-500 rounded-full" style="width: 50%"></div></div>
+                    <!-- 模組 1: 行政 -->
+                    <div class="bg-cardbg rounded-2xl border border-neutral-800 overflow-hidden hover:border-primary/50 transition duration-300">
+                        <div class="p-8 flex flex-col md:flex-row gap-8 items-start">
+                            <div class="w-16 h-16 rounded-xl bg-neutral-800 flex items-center justify-center text-3xl text-primary shrink-0">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-2xl font-bold text-white mb-2">行政訴訟智能模組 (Admin-Lit Engine)</h4>
+                                    <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded border border-green-500/30">ONLINE</span>
                                 </div>
-                                <div>
-                                    <div class="flex justify-between text-sm text-white mb-1"><span>稽查比對速度</span> <span class="text-green-400 font-bold">+300%</span></div>
-                                    <div class="h-2 bg-neutral-800 rounded-full"><div class="h-full bg-green-500 rounded-full" style="width: 85%"></div></div>
+                                <p class="text-gray-400 mb-6 leading-relaxed">
+                                    專門處理稅務裁罰撤銷、地政處分爭議。系統能自動檢測「理由附記」是否完備、是否違反「比例原則」，並自動生成訴願書與行政訴訟起訴狀。
+                                </p>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">程序瑕疵檢測</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">裁罰金額合理性</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">過往判決比對</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">訴願書生成</div>
                                 </div>
-                                <div>
-                                    <div class="flex justify-between text-sm text-white mb-1"><span>法遵一致性</span> <span class="text-green-400 font-bold">100%</span></div>
-                                    <div class="h-2 bg-neutral-800 rounded-full"><div class="h-full bg-green-500 rounded-full" style="width: 100%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 模組 2: 不動產 -->
+                    <div class="bg-cardbg rounded-2xl border border-neutral-800 overflow-hidden hover:border-blue-500/50 transition duration-300">
+                        <div class="p-8 flex flex-col md:flex-row gap-8 items-start">
+                            <div class="w-16 h-16 rounded-xl bg-neutral-800 flex items-center justify-center text-3xl text-blue-500 shrink-0">
+                                <i class="fa-solid fa-house-chimney"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-2xl font-bold text-white mb-2">不動產強制執行模組 (RE-Enforce)</h4>
+                                    <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-bold rounded border border-yellow-500/30">DEV</span>
+                                </div>
+                                <p class="text-gray-400 mb-6 leading-relaxed">
+                                    整合地籍圖資與實價登錄 API。自動分析抵押權順位 (第一/二胎)、查封現況，並計算強制執行後的潛在回收價值 (Recovery Value)。
+                                </p>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">地籍自動調查</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">抵押權順位試算</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">法拍估價模型</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">分配表試算</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 模組 3: 刑事 -->
+                    <div class="bg-cardbg rounded-2xl border border-neutral-800 overflow-hidden hover:border-red-500/50 transition duration-300">
+                        <div class="p-8 flex flex-col md:flex-row gap-8 items-start">
+                            <div class="w-16 h-16 rounded-xl bg-neutral-800 flex items-center justify-center text-3xl text-red-500 shrink-0">
+                                <i class="fa-solid fa-handcuffs"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-2xl font-bold text-white mb-2">刑事構成要件分析 (Criminal Logic)</h4>
+                                    <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-bold rounded border border-yellow-500/30">DEV</span>
+                                </div>
+                                <p class="text-gray-400 mb-6 leading-relaxed">
+                                    針對詐欺、偽造文書、侵占等白領犯罪。系統自動比對事實與刑法構成要件 (主觀/客觀)，並自動生成專業的「刑事告發狀」或「自訴狀」。
+                                </p>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">構成要件拆解</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">證據矩陣分析</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">起訴趨勢預測</div>
+                                    <div class="p-3 bg-neutral-900 rounded border border-neutral-800 text-xs text-gray-300 text-center">告發狀生成</div>
                                 </div>
                             </div>
                         </div>
@@ -257,42 +257,158 @@
                 </div>
             </section>
 
-            <!-- 6. 商業模式 -->
-            <section id="business" class="scroll-mt-32">
-                <div class="flex items-end mb-8 border-b border-neutral-800 pb-4">
-                    <span class="text-6xl font-black text-neutral-800 mr-4 -mb-1">06</span>
-                    <h2 class="text-3xl font-bold text-white">商業模式 (Business Model)</h2>
+            <!-- 4. RAG 技術架構 -->
+            <section id="rag" class="scroll-mt-32">
+                <div class="flex items-end mb-10 border-b border-neutral-800 pb-6">
+                    <span class="text-7xl font-black text-neutral-800 mr-6 -mb-2">04</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-white">RAG 技術架構</h2>
+                        <p class="text-primary font-mono text-sm mt-1 uppercase tracking-wider">Retrieval-Augmented Generation</p>
+                    </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="p-8 bg-neutral-900 rounded-2xl border border-neutral-800 text-center hover:border-neutral-600 transition">
-                        <h4 class="text-gray-400 font-bold mb-4 uppercase tracking-widest text-sm">Public Edition</h4>
-                        <div class="text-3xl text-white font-mono mb-2">NT$ 199<span class="text-sm text-gray-500">/月</span></div>
-                        <p class="text-neutral-500 text-sm mb-6">適合一般民眾與小型案件</p>
-                        <ul class="text-sm text-gray-400 space-y-3 text-left border-t border-neutral-800 pt-6">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-3"></i> 基礎法律助手</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-3"></i> 簡易書狀生成</li>
+
+                <div class="bg-neutral-900 p-10 rounded-2xl border border-neutral-800 relative overflow-hidden">
+                    <!-- 背景裝飾 -->
+                    <div class="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')] opacity-5"></div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-3">1. 專屬法律向量資料庫 (VectorDB)</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    我們不依賴通用模型 (如 ChatGPT) 的幻覺，而是建立台灣專屬的法律資料庫。包含 2000 萬筆裁判書、完整法規與行政函釋。系統會先「檢索」正確法條，再「生成」回答。
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-3">2. 跨政府資料融合 (Data Fusion)</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    透過 API 串接內政部地政司 (地籍/實價)、財政部 (稅務數據) 與司法院開放資料，將分散的政府數據在系統中進行結構化整合與交叉比對。
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-3">3. 專業文書生成 (DocGen)</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    內建符合台灣法院標準的 A4 標楷體排版引擎。自動生成卷宗封面、目錄、頁碼與附件清單，產出之 Word/PDF 檔案可直接遞交法院。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- 簡易架構圖示意 -->
+                        <div class="bg-neutral-950 rounded-xl border border-neutral-800 p-6 flex items-center justify-center">
+                            <div class="flex flex-col items-center space-y-4 w-full">
+                                <div class="w-full p-3 bg-neutral-800 rounded border border-neutral-700 text-center text-gray-300 text-xs">USER INPUT</div>
+                                <div class="h-4 w-px bg-gray-700"></div>
+                                <div class="w-full p-4 bg-primary/10 border border-primary/50 rounded text-center text-primary font-bold">RAG ENGINE</div>
+                                <div class="flex w-full gap-2">
+                                    <div class="flex-1 h-4 border-r border-gray-700"></div>
+                                    <div class="flex-1 h-4 border-l border-gray-700"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4 w-full">
+                                    <div class="p-3 bg-neutral-900 border border-neutral-800 rounded text-center">
+                                        <div class="text-xs text-gray-500 mb-1">Knowledge</div>
+                                        <div class="text-white text-sm">裁判書 / 法條</div>
+                                    </div>
+                                    <div class="p-3 bg-neutral-900 border border-neutral-800 rounded text-center">
+                                        <div class="text-xs text-gray-500 mb-1">Live Data</div>
+                                        <div class="text-white text-sm">地籍 / 稅籍</div>
+                                    </div>
+                                </div>
+                                <div class="h-4 w-px bg-gray-700"></div>
+                                <div class="w-full p-3 bg-neutral-800 rounded border border-neutral-700 text-center text-white text-xs">LEGAL DOCUMENT OUTPUT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. 政府 POC -->
+            <section id="gov" class="scroll-mt-32">
+                <div class="flex items-end mb-10 border-b border-neutral-800 pb-6">
+                    <span class="text-7xl font-black text-neutral-800 mr-6 -mb-2">05</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-white">政府合作 POC 提案</h2>
+                        <p class="text-primary font-mono text-sm mt-1 uppercase tracking-wider">Government Partnership</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-neutral-900 to-black p-10 rounded-2xl border border-neutral-800">
+                    <p class="text-gray-300 mb-8 text-lg">針對公務機關量身打造的智能賦能計畫，解決人力短缺與跨機關資料整合難題。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 bg-neutral-800 rounded-full flex items-center justify-center text-primary text-xl"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                                <div>
+                                    <h5 class="text-white font-bold mb-1">政風處 / 調查局</h5>
+                                    <p class="text-sm text-gray-500">案件資料自動比對、關係人圖譜生成、異常標案偵測。</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 bg-neutral-800 rounded-full flex items-center justify-center text-primary text-xl"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                                <div>
+                                    <h5 class="text-white font-bold mb-1">國稅局 / 賦稅署</h5>
+                                    <p class="text-sm text-gray-500">逃漏稅證據智能分析、虛增成本查核、金流勾稽。</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 bg-neutral-800 rounded-full flex items-center justify-center text-primary text-xl"><i class="fa-solid fa-map-location-dot"></i></div>
+                                <div>
+                                    <h5 class="text-white font-bold mb-1">地政單位</h5>
+                                    <p class="text-sm text-gray-500">複雜產權梳理、公有地被佔用偵測、地籍異動異常分析。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-neutral-950/80 p-6 rounded-xl border border-neutral-800">
+                            <h5 class="text-green-500 font-bold mb-6 uppercase tracking-widest text-xs">Project KPI</h5>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between text-white text-sm mb-2"><span>行政案件處理效率</span> <span class="font-bold text-green-400">+50%</span></div>
+                                    <div class="w-full bg-neutral-800 h-2 rounded-full"><div class="bg-green-500 h-2 rounded-full" style="width: 50%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-white text-sm mb-2"><span>稽查比對速度</span> <span class="font-bold text-green-400">+300%</span></div>
+                                    <div class="w-full bg-neutral-800 h-2 rounded-full"><div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-white text-sm mb-2"><span>法遵一致性</span> <span class="font-bold text-green-400">100%</span></div>
+                                    <div class="w-full bg-neutral-800 h-2 rounded-full"><div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. 資安 -->
+            <section id="security" class="scroll-mt-32">
+                <div class="flex items-end mb-10 border-b border-neutral-800 pb-6">
+                    <span class="text-7xl font-black text-neutral-800 mr-6 -mb-2">06</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-white">資安與合規</h2>
+                        <p class="text-primary font-mono text-sm mt-1 uppercase tracking-wider">Security & Compliance</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-neutral-900 p-8 rounded-xl border border-neutral-800">
+                        <h4 class="text-lg font-bold text-white mb-4 flex items-center">
+                            <i class="fa-solid fa-shield-halved text-blue-500 mr-3"></i>基礎設施安全
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-400">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> 資料傳輸全加密 (TLS 1.3)</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> 資料庫靜態加密 (AES-256)</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> 符合 ISO 27001 資安標準</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> 嚴格的角色權限控管 (RBAC)</li>
                         </ul>
                     </div>
-                    <div class="p-8 bg-neutral-800 rounded-2xl border-2 border-primary relative text-center transform md:-translate-y-4 shadow-2xl">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-primary text-black text-xs font-bold px-3 py-1 rounded-b">MOST POPULAR</div>
-                        <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-sm mt-4">Professional</h4>
-                        <div class="text-4xl text-primary font-mono mb-2">NT$ 1,499<span class="text-sm text-gray-400">/月</span></div>
-                        <p class="text-neutral-400 text-sm mb-6">適合律師、代書與法務人員</p>
-                        <ul class="text-sm text-gray-300 space-y-3 text-left border-t border-neutral-700 pt-6">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-primary mr-3"></i> <strong>全模組解鎖</strong></li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-primary mr-3"></i> Word/PDF 無限生成</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-primary mr-3"></i> 案件管理系統</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-primary mr-3"></i> 優先運算排序</li>
-                        </ul>
-                    </div>
-                    <div class="p-8 bg-neutral-900 rounded-2xl border border-neutral-800 text-center hover:border-neutral-600 transition">
-                        <h4 class="text-gray-400 font-bold mb-4 uppercase tracking-widest text-sm">Enterprise / Gov</h4>
-                        <div class="text-3xl text-purple-400 font-mono mb-2">專案報價</div>
-                        <p class="text-neutral-500 text-sm mb-6">適合政府機關與大型事務所</p>
-                        <ul class="text-sm text-gray-400 space-y-3 text-left border-t border-neutral-800 pt-6">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-3"></i> 私有雲部署 (Air-gapped)</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-3"></i> 客製化模型微調</li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-purple-500 mr-3"></i> API 完整串接</li>
+                    <div class="bg-neutral-900 p-8 rounded-xl border border-neutral-800">
+                        <h4 class="text-lg font-bold text-white mb-4 flex items-center">
+                            <i class="fa-solid fa-user-secret text-green-500 mr-3"></i>隱私與倫理
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-400">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> <strong>PII Masking：</strong> 個資自動去識別化，敏感資料不進模型。</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> <strong>引用透明化：</strong> 標示法條/判決來源，避免幻覺。</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i> <strong>責任分層：</strong> 明確標示「AI 輔助」，最終法律責任由律師確認。</li>
                         </ul>
                     </div>
                 </div>
@@ -302,11 +418,11 @@
     </div>
 
     <!-- 底部版權 -->
-    <div class="mt-24 pt-12 border-t border-neutral-800 text-center pb-12">
+    <div class="mt-32 pt-12 border-t border-neutral-800 text-center pb-12">
         <img src="/images/logo.png" alt="Logo" class="h-12 mx-auto mb-6 opacity-50 grayscale hover:grayscale-0 transition">
         <p class="text-neutral-600 font-mono text-xs tracking-wider">
             © 2025 法務理債策略研究室 | Legal & Debt Strategy Institute<br>
-            Powered by Rongshu Core System v2.0
+            Powered by Rongshu Core System v2.1
         </p>
     </div>
 </div>
