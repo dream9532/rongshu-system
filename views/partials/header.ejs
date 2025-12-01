@@ -22,6 +22,10 @@
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body class="bg-darkbg text-gray-100 font-sans antialiased overflow-hidden selection:bg-primary selection:text-black">
     <div class="flex h-screen">
@@ -37,7 +41,7 @@
                 </a>
                 <a href="/diagnose" class="flex items-center px-4 py-3 bg-primary/10 text-primary border border-primary/20 rounded-lg transition-all shadow-[0_0_15px_rgba(212,175,55,0.1)]">
                     <i class="fa-solid fa-gavel w-6"></i> 
-                    <span class="tracking-wide font-bold">啟動 AI 判例分析</span>
+                    <span class="tracking-wide font-bold">啟動智能判例分析</span>
                 </a>
                 <a href="/plan" class="flex items-center px-4 py-3 text-gray-300 hover:bg-neutral-800 hover:text-primary rounded-lg transition-all group">
                     <i class="fa-solid fa-book-journal-whills w-6 text-neutral-500 group-hover:text-primary transition"></i> 

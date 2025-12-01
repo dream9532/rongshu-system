@@ -16,9 +16,8 @@ app.get('/', (req, res) => {
     res.render('index', { title: '融數核心系統 - System Online' });
 });
 
-// 新增的白皮書路由
 app.get('/plan', (req, res) => {
-    res.render('plan', { title: '專案白皮書 - 法務理債策略研究室' });
+    res.render('plan', { title: '專案白皮書 (Whitepaper) - 法務理債策略研究室' });
 });
 
 app.get('/diagnose', (req, res) => {
@@ -63,7 +62,7 @@ app.post('/result', async (req, res) => {
 
     } catch (error) {
         console.error("AI Error:", error);
-        aiResult.analysis = "⚠️ AI 核心連線逾時，目前僅顯示基礎運算結果。";
+        aiResult.analysis = "⚠️ 核心連線逾時，目前僅顯示基礎運算結果。";
     }
 
     res.render('result', { 
