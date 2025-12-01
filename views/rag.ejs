@@ -17,9 +17,8 @@
             </div>
             <div class="bg-slate-800 border border-gray-600/50 text-gray-200 p-4 rounded-lg rounded-tl-none max-w-[85%] text-sm leading-relaxed shadow-md">
                 <span class="block text-blue-400 text-xs font-bold mb-1 font-mono">SYSTEM ADVISOR</span>
-                您好，我是您的數位法務顧問。系統已連線至最新法規資料庫。<br>
-                請描述您遇到的法律或債務問題，我將為您進行權益分析。<br>
-                <span class="text-gray-500 text-xs mt-2 block">(例如：收到支付命令異議期計算、強制執行薪資扣押比例...)</span>
+                您好，數位法務顧問已上線。系統已連線至最新法規資料庫。<br>
+                請描述案件詳情，我將為您進行權益分析。
             </div>
         </div>
     </div>
@@ -27,10 +26,8 @@
     <div class="relative group">
         <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-200"></div>
         <div class="relative flex">
-            <input type="text" id="userInput" class="w-full bg-slate-900 border border-gray-600 rounded-l-lg pl-5 pr-4 py-4 text-white focus:border-blue-500 outline-none placeholder-gray-600 transition" placeholder="請輸入案件詳情或法律疑問..." onkeypress="if(event.key === 'Enter') sendMessage()">
-            <button onclick="sendMessage()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 rounded-r-lg transition flex items-center font-bold tracking-wider border-l border-blue-400/30">
-                <i class="fa-solid fa-paper-plane mr-2"></i> 發送
-            </button>
+            <input type="text" id="userInput" class="w-full bg-slate-900 border border-gray-600 rounded-l-lg pl-5 pr-4 py-4 text-white focus:border-blue-500 outline-none placeholder-gray-600" placeholder="請輸入法律疑問..." onkeypress="if(event.key === 'Enter') sendMessage()">
+            <button onclick="sendMessage()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 rounded-r-lg font-bold tracking-wider border-l border-blue-400/30"><i class="fa-solid fa-paper-plane mr-2"></i> 發送</button>
         </div>
     </div>
 </div>
@@ -42,56 +39,20 @@
         const msg = input.value.trim();
         if (!msg) return;
 
-        // 顯示使用者訊息
-        chatBox.innerHTML += `
-            <div class="flex items-start justify-end">
-                <div class="bg-blue-600 text-white p-4 rounded-lg rounded-tr-none max-w-[85%] text-sm shadow-md">
-                    \${msg}
-                </div>
-                <div class="w-8 h-8 rounded bg-blue-500/20 flex-shrink-0 flex items-center justify-center ml-3 mt-1">
-                    <i class="fa-solid fa-user text-blue-300 text-xs"></i>
-                </div>
-            </div>`;
+        chatBox.innerHTML += `<div class="flex items-start justify-end"><div class="bg-blue-600 text-white p-4 rounded-lg rounded-tr-none max-w-[85%] text-sm shadow-md">${msg}</div></div>`;
         input.value = '';
         chatBox.scrollTop = chatBox.scrollHeight;
 
-        // 顯示 Loading (改為專業術語)
         const loadingId = 'loading-' + Date.now();
-        chatBox.innerHTML += `
-            <div id="\${loadingId}" class="flex items-start">
-                <div class="w-8 h-8 rounded bg-slate-700 flex-shrink-0 flex items-center justify-center mr-3 mt-1">
-                    <i class="fa-solid fa-ellipsis text-gray-400 animate-pulse"></i>
-                </div>
-                <div class="bg-slate-800/50 border border-gray-700/50 text-gray-400 p-3 rounded-lg rounded-tl-none text-xs font-mono flex items-center">
-                    <i class="fa-solid fa-circle-notch fa-spin mr-2"></i> 正在檢索法規資料庫 (Retrieving)...
-                </div>
-            </div>`;
+        chatBox.innerHTML += `<div id="${loadingId}" class="flex items-start"><div class="w-8 h-8 rounded bg-slate-700 mr-3 mt-1 flex items-center justify-center"><i class="fa-solid fa-ellipsis text-gray-400 animate-pulse"></i></div><div class="bg-slate-800/50 border border-gray-700/50 text-gray-400 p-3 rounded-lg text-xs font-mono flex items-center">檢索法規資料庫 (Retrieving)...</div></div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
 
-        // 呼叫後端 API
         try {
-            const res = await fetch('/api/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: msg })
-            });
+            const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: msg }) });
             const data = await res.json();
-            
-            // 移除 Loading，顯示回覆
             document.getElementById(loadingId).remove();
-            chatBox.innerHTML += `
-                <div class="flex items-start">
-                    <div class="w-8 h-8 rounded bg-slate-700 flex-shrink-0 flex items-center justify-center mr-3 mt-1">
-                        <i class="fa-solid fa-user-tie text-gray-300 text-xs"></i>
-                    </div>
-                    <div class="bg-slate-800 border border-gray-600/50 text-gray-200 p-4 rounded-lg rounded-tl-none max-w-[85%] text-sm leading-relaxed shadow-md">
-                        <span class="block text-blue-400 text-xs font-bold mb-1 font-mono">SYSTEM ADVISOR</span>
-                        \${data.reply.replace(/\n/g, '<br>')}
-                    </div>
-                </div>`;
-        } catch (e) {
-            document.getElementById(loadingId).innerText = "連線中斷，請檢查網路。";
-        }
+            chatBox.innerHTML += `<div class="flex items-start"><div class="w-8 h-8 rounded bg-slate-700 mr-3 mt-1 flex items-center justify-center"><i class="fa-solid fa-user-tie text-gray-300 text-xs"></i></div><div class="bg-slate-800 border border-gray-600/50 text-gray-200 p-4 rounded-lg rounded-tl-none max-w-[85%] text-sm leading-relaxed shadow-md"><span class="block text-blue-400 text-xs font-bold mb-1 font-mono">SYSTEM ADVISOR</span>${data.reply.replace(/\n/g, '<br>')}</div></div>`;
+        } catch (e) { document.getElementById(loadingId).innerText = "連線異常"; }
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 </script>
